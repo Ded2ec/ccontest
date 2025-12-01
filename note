@@ -1,0 +1,15 @@
+CREATE TABLE `profiles` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `full_name` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar_url` LONGTEXT COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_user_profile` (`user_id`),
+  CONSTRAINT `fk_profiles_user`
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
