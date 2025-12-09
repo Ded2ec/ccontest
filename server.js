@@ -9,6 +9,7 @@ app.use(express.json({ limit: "5mb" }));
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/profile", require("./routes/profile"));
+app.use("/api/evaluation", require("./routes/evaluation"));
 
 app.use((req, res, next) => {
     res.status(404).json({ message: "Not found" });
